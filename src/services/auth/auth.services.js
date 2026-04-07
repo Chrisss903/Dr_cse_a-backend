@@ -21,8 +21,8 @@ export const signInService = async (data) => {
   }
 
   const isPasswordCorrect = await bcrypt.compare(
-    existingUser.password,
     data.password,
+    existingUser.password,
   );
 
   if (!isPasswordCorrect) {

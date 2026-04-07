@@ -1,4 +1,7 @@
-import { signUpService , signInService } from "../../services/auth/auth.services.js";
+import {
+  signUpService,
+  signInService,
+} from "../../services/auth/auth.services.js";
 
 export const signUpController = async (req, res) => {
   try {
@@ -15,19 +18,17 @@ export const signUpController = async (req, res) => {
   }
 };
 
-export const signInService = async (req,res) => {
-
-  try{
-    const user = await signInService(req.body)
+export const signInController = async (req, res) => {
+  try {
+    const user = await signInService(req.body);
 
     res.status(200).json({
-      message:"user sucessfully logged in"
-    })
+      message: "user sucessfully logged in",
+      user,
+    });
+  } catch (error) {
+    res.status(401).json({
+      message: "user not found",
+    });
   }
-  catch(error){
-     res.status(401).json({
-      message:"user not found"
-     })
-  }
-
-}
+};
