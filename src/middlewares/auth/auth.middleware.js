@@ -2,7 +2,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const validateSignup = (req, res, next) => {
   const { name, email, password } = req.body;
-
+  console.log(req.body);
   if (!name || !email || !password) {
     return res.status(400).json({
       message: "Name, email, password are required",
